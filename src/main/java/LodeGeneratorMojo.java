@@ -316,12 +316,12 @@ public class LodeGeneratorMojo extends AbstractMojo {
 				String entryName = entry.getName();
 				if ( entryName.startsWith( resourceName ) && ! entryName.equals( resourceName ) ) {
 
-					int idx = entryName.lastIndexOf( File.separator );
+					int idx = entryName.lastIndexOf( '/' );
 					String innerPath = entryName.substring( 0, idx + 1 );
 					String innerName = entryName.substring( idx + 1 );
 					if ( isOntologyFileName( innerName ) ) {
 						String filePath = getTargetFilePath( innerName, innerPath );
-						process( new URL( "jar:" + jarUrl + "!" + File.separator + entryName  ), filePath, transformer );
+						process( new URL( "jar:" + jarUrl + "!" + '/' + entryName  ), filePath, transformer );
 					}
 				}
 			}
